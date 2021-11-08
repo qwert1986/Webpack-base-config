@@ -1,0 +1,36 @@
+{
+  "name": "webpack-base-config",
+  "version": "0.0.1",
+  "description": "Base webpack config",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --open",
+    "watch": "cross-env NODE_ENV=development webpack --watch",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "author": "Dmitry Blagov <dmitryblagov@gmail.com>",
+  "license": "ISC",
+  "private": "true",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "mini-css-extract-plugin": "^2.4.4",
+    "node-sass": "^6.0.1",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "postcss-loader": "^6.2.0",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.2.4",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {}
+}
