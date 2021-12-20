@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TreserWebpackPlugin = require('terser-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -81,9 +82,16 @@ module.exports = {
       port: 8080,
       hot: isDev,
       watchFiles: ['src/**/*', 'dist/**/*'],
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false
+        }
+      }
     },
     devtool: isDev ? 'source-map' : 'eval-source-map',
     plugins: [
+        new ESLintPlugin({}),
         new HTMLWebpackPlugin({
             template: './index.html',
             minify: {
