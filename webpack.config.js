@@ -6,6 +6,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TreserWebpackPlugin = require('terser-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -63,7 +64,7 @@ console.log('is dev=', isDev)
 console.log('__dirname=', path.resolve(__dirname))
 
 module.exports = {
-    mode: 'development',
+    mode: isDev ? 'development' : 'production',
     context: path.resolve(__dirname, 'src'),
     entry: {
       app: './js/app.js', 
@@ -89,8 +90,9 @@ module.exports = {
         }
       }
     },
-    devtool: isDev ? 'source-map' : 'eval-source-map',
+    devtool: isDev ? 'eval-source-map' : 'source-map',
     plugins: [
+        //new BundleAnalyzerPlugin(),
         new ESLintPlugin({}),
         new HTMLWebpackPlugin({
             template: './index.html',
@@ -142,7 +144,7 @@ module.exports = {
               test: /\.js$/,
               exclude: /(node_modules|bower_components)/,
               use: ['babel-loader']
-            }
+            },
         ],
       },
 };
